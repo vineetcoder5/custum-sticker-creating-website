@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>sticker paradise</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/cart_mobile.css') }}">
+        <script src="{{ url_for('static', filename='java/cart.js') }}"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    </head>
+    <body>
+        <header id="header">
+            <div id="logobox">
+                <a href="/"><h1 id="logo">sticker paradise</h1></a>
+            </div>
+            <!-- <div class="align-right">
+                <button id = "logincheck" class="custom-btn btn-15" onclick="openForm()" style="display: inline-block;">Login/Sign up</button>
+                <button id = "myaccount" class="custom-btn btn-15" onclick="window.location.href='/';" style="display: none;">My account</button>
+            </div> -->
+        </header>
+        <div id="login-failed" class="overlay">
+            <div class="popup">
+              <h2 id="popup_heading">Hello World</h2>
+              <button class="close" onclick="closepopup()" style="border: 0px;">&times;</button>
+              <p id="popup_pragraph">Thanks to pop me!</p>
+          </div>
+        </div>
+        <div id="huge_cart">
+            <div id="nav_mobile">
+                <a href="/pre_design"><button id = "custum" class="custom-btn btn-15" style="display: inline-block; margin: 0px; width: 100px; border-radius: 13px;"><div>
+                    <img src="{{ url_for('static', filename='image/custum.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+                    </div>
+                    <div style="padding: 7px;">designs</div></button>
+                </a>
+                <a href="/my_account"><button id = "custum" class="custom-btn btn-15" style="display: inline-block; margin: 0px; width: 120px; border-radius: 13px;"><div>
+                    <img src="{{ url_for('static', filename='image/account.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+                    </div>
+                    <div style="padding: 7px;">my account</div></button></a>
+            </div>
+            <div  id="preview_image">
+                <img id="dynamic_image" src="{{ url_for('static', filename='image/delete.png') }}" alt="delete" style="border: 5px solid #555; border-radius: 25px">
+            </div>
+            <div id="cart_total" >
+                <div id="delivery_flex">
+                    <div style="font-family: monospace; font-size: 28px;">Deliver to</div>
+                    <div id="final_name" style="font-family: monospace; font-size: 17px; ">{{ adress[0][0] }}</div>
+                    <div id="final_adress1" style="font-family: monospace; font-size: 17px;">{{ adress[0][1] }}</div>
+                    <div id="final_adress2" style="font-family: monospace; font-size: 17px; ">{{ adress[0][2] }}</div>
+                    <div style="font-family: monospace; font-size: 17px; ">
+                        <div id="final_state" style="float: left; margin-right: 10px;">{{ adress[0][3] }}</div>
+                        <div id="final_pincode" >{{ adress[0][4] }}</div>
+                    </div>
+                    <div style="font-family: monospace; font-size: 17px;">India</div>
+                    <div style="font-family: monospace; font-size: 17px; ">
+                        <div style="float: left; margin-right: 10px;">Mobile number:- </div>
+                        <div id="final_mobilenumber" >{{ adress[0][5] }}</div>
+                    </div>
+                    <div id="adress_edit_button">
+                        <button onclick="openForm()" class="custom-btn btn-15">Add/edit adress</button>
+                    </div>
+                </div>
+                <div id="summary_flex">
+                    <div style="font-family: monospace; font-size: 28px;">Summary</div>
+                    <div style="font-family: monospace; font-size: 20px; margin-top: 12px;">
+                        <div style="float: left;">subtotal</div>
+                        <div  id="cart_total_value" class="align-right">₹{{ total }}</div>
+                    </div>
+                    <div style="font-family: monospace; font-size: 20px; margin-top: 12px;">
+                        <div style="float: left;">shipping</div>
+                        <div class="align-right">Free</div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div style="font-family: monospace; font-size: 25px; margin-top: 12px;">
+                            <div style="float: left;">Total</div>
+                            <div class="align-right">₹{{ total }}</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="adress_edit_button">
+                        <button  onclick="openpayment()" class="custom-btn btn-15" >Pay Now</button>
+                    </div>
+                </div>
+            </div>
+            <div id="cart_item">
+                <ul style="list-style-type: none; padding-left: 0px;">
+                    {% for item in cart_items %}
+                        <li><div id = cart_elements>
+                                <div class="cart_image" >
+                                    <img style="background-color: white; border-radius: 10px;" src="{{ url_for('static', filename='cart_images/' +  item[4] + '.png') }}" alt="shoping cart" >
+                                </div>
+                                <div id="cart_item_name" style="display: none;">
+                                    {{ item[0] }}
+                                </div>
+                                <div id="cart_item_cost">
+                                    <div>Each</div>
+                                    <div>₹{{ item[1] }}</div>
+                                </div>
+                                <div id="cart_item_quantity">
+                                    <div style="margin-bottom: 5px;">Quantity</div>
+                                    <!-- <div>₹50</div> -->
+                                    <div>
+                                        <button id="item_decrement" onclick="decrement(this)">-</button>
+                                        <div id = "Quantity" style="float: left; margin-right: 6px;">{{ item[2] }}</div>
+                                        <button id="item_increment" onclick="increment(this)">+</button>
+                                    </div>
+                                </div>
+                                <div id="cart_item_total">
+                                    <div>Total</div>
+                                    <div>₹{{ item[3] }}</div>
+                                </div>
+                                <div id="cart_item_delete">
+                                    <button style="border: none; background: none; scale: 0.6;" onclick="handleDelete(this)">
+                                        <img src="{{ url_for('static', filename='image/delete.png') }}" alt="delete" >
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- <div  id="preview_image">
+                <img id="dynamic_image" src="{{ url_for('static', filename='image/delete.png') }}" alt="delete" style="border: 5px solid #555; border-radius: 25px">
+            </div>
+            <div id="cart_total" >
+                <div style="font-family: monospace; font-size: 28px;">Summary</div>
+                <div style="font-family: monospace; font-size: 20px; margin-top: 12px;">
+                    <div style="float: left;">subtotal</div>
+                    <div  id="cart_total_value" class="align-right">₹{{ total }}</div>
+                </div>
+                <div style="font-family: monospace; font-size: 20px; margin-top: 12px;">
+                    <div style="float: left;">shipping fee</div>
+                    <div class="align-right">Free</div>
+                </div>
+                <hr>
+                <div style="font-family: monospace; font-size: 25px; margin-top: 12px;">
+                    <div style="float: left;">Total</div>
+                    <div class="align-right">₹{{ total }}</div>
+                </div>
+                <hr>
+                <div id="adress_edit_button">
+                    <button  onclick="openpayment()" class="custom-btn btn-15" style="margin-top: 7px; width: 17vw;">Pay Now</button>
+                </div>
+                <div style="font-family: monospace; font-size: 28px; margin-top:  15px;">Deliver to</div>
+                <div id="final_name" style="font-family: monospace; font-size: 17px; margin-top:  5px;">{{ adress[0][0] }}</div>
+                <div id="final_adress1" style="font-family: monospace; font-size: 17px; margin-top:  2px;">{{ adress[0][1] }}</div>
+                <div id="final_adress2" style="font-family: monospace; font-size: 17px; margin-top:  2px;">{{ adress[0][2] }}</div>
+                <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">
+                    <div id="final_state" style="float: left; margin-right: 10px;">{{ adress[0][3] }}</div>
+                    <div id="final_pincode" >{{ adress[0][4] }}</div>
+                </div>
+                <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">India</div>
+                <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">
+                    <div style="float: left; margin-right: 10px;">Mobile number:- </div>
+                    <div id="final_mobilenumber" >{{ adress[0][5] }}</div>
+                </div>
+                <div id="adress_edit_button">
+                    <button onclick="openForm()" class="custom-btn btn-15" style="margin-top: 7px; width: 17vw;">Add/edit adress</button>
+                </div>
+            </div> -->
+        </div>
+        <div id="payment_form" style="display: none;">
+            <div>
+                <div id="qr_image">
+                    <img src="{{ url_for('static', filename='image/delete.png') }}" style="height: 29vh;" alt="delete" >
+                </div>
+            </div>
+            <div style="font-family: monospace; font-size: xx-large;">Scan to pay OR</div>
+            <button onclick="upi_mobile();" class="custom-btn btn-15" style="width: 105px; height: 39px; display: flex; align-items: center; justify-content: center; display: none;">
+                <img style="width: 85%; height: 85%;" src="{{ url_for('static', filename='image/upi.png') }}" alt="delete" >
+            </button>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <label for="sender_name">Enter full sender name for payment verification </label>
+                <p style="margin-top: 5px;"><input class="input2" type="text" id="sender_name" autocomplete="off" placeholder="Enter sender name for payment verification" name="address1" /></p>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+                <button onclick="payment_done(),gtag_report_conversion()" class="custom-btn btn-15" style="width: auto;">payment done</button>
+                <button  onclick="closepayment()" class="custom-btn btn-15" style="width: auto;">close /payment failed</button>
+            </div>
+        </div>
+        <div id="adress_form">
+            <form id="address" method="post" style="margin: 12px;">
+                <div>
+                    <div style="float: left; margin-right: 5px;">
+                        <label for="Name">Name</label>
+                        <p style="margin-top: 5px;"><input class="input2" type="text" id="Name" autocomplete="off" placeholder="Enter full Name" name="Name" /></p>
+                    </div>
+                    <div>
+                        <label for="address1">Address 1</label>
+                        <p style="margin-top: 5px;"><input class="input2" type="text" id="address1" autocomplete="off" placeholder="Enter address 1" name="address1" /></p>
+                    </div>
+                </div>
+                <div>
+                    <div style="float: left; margin-right: 5px;">
+                        <label for="address2">Address 2</label>
+                        <p style="margin-top: 5px;"><input class="input2" type="text" id="address2" autocomplete="off" placeholder="Enter address 2" name="address2" /></p>
+                    </div>
+                    <label for="state">State</label>
+                    <p style="margin-top: 5px;"><input class="input2" type="text" id="state" autocomplete="off" placeholder="Enter State Name" name="state" /></p>
+                </div>
+                <div>
+                    <div style="float: left; margin-right: 5px;">
+                        <label for="pincode">Pincode</label>
+                        <p style="margin-top: 5px;"><input class="input2" type="number" id="pincode" autocomplete="off" placeholder="Enter area pincode" maxlength="8" name="pincode" /></p>
+                    </div>
+                    <label for="mobilenumber">Mobile Number</label>
+                    <p style="margin-top: 5px;"><input class="input2" type="number" id="mobilenumber"  autocomplete="off" placeholder="Enter your Mobile Number" maxlength="12" name="mobilenumber"/></p>
+                </div>
+                <p class="submit"><input class="input2" type="submit" value="Submit" name="logintype"/></p>
+            </form>
+            <div id="close_form">
+                <button onclick="openForm()" class="custom-btn btn-15" style="margin-bottom: 5px; height: 27px; 
+                ">close</button>
+            </div>
+        </div>
+    </body>
+</html>

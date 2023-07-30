@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/predesign.css') }}">
+        <script src="{{ url_for('static', filename='java/predesign.js') }}"> </script>
+        <title>sticker paradise</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    </head>
+    <body>
+      <div id="idd" style="display: none;">none</div>
+      <header style="margin-bottom: 10px;">
+        <div id="logobox">
+          <a href="/"><h1 id="logo">sticker paradise</h1></a>
+        </div>
+        <div class="align-right">
+          <a href="/custumize"><button id = "custum" class="custom-btn btn-15"><div>
+            <img src="{{ url_for('static', filename='image/custum.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+            </div>
+            <div style="padding: 7px;">custumize</div></button>
+        </a>
+          <button id = "logincheck" class="custom-btn btn-15" onclick="openForm()" style="display: inline-block;">Login/Sign up</button>
+          <a href="/my_account"> 
+            <button id="myaccount" class="custom-btn btn-15">
+                <div>
+                    <img src="{{ url_for('static', filename='image/account.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+                </div>
+                <div style="padding: 7px;">My account</div>
+            </button>
+          </a>
+          <a href="/cart"> 
+          <button id="cart_button" class="custom-btn btn-15">
+              <div>
+                  <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+              </div>
+              <div style="padding: 7px;">cart</div>
+          </button>
+        </a>
+      </div>
+      </header>
+      <div id="login-failed" class="overlay" style="z-index: 2;">
+        <div class="popup">
+          <h2 id="popup_heading">Hello World</h2>
+          <button class="close" onclick="closepopup()" style="border: 0px;">&times;</button>
+          <p id="popup_pragraph">Thanks to pop me!</p>
+      </div>
+      </div>
+      <section id="wrapper">
+        <div id="one">
+          <form id="loginsignup" method="post">
+            <label for="fName">Full name</label>
+            <p><input class="input2" type="text" id="fName" autocomplete="off" name="name"/></p>
+    
+            <label for="email">Email</label>
+            <p><input class="input2" type="email" id="email" placeholder="Enter valid email" autocomplete="off" name="email"/></p>
+    
+            <label for="password">Password</label>
+            <p><input class="input2" type="password" id="password" placeholder="8 characters minimum" name="password"/></p>
+            <p class="submit"><input class="input2" type="submit" value="Sign up" name="logintype"/></p>
+          </form>
+        </div>
+        <div id="two">
+          <form id="loginsignin" method="post"> 
+            <label for="emailIn">Email</label>
+            <p><input class="input2" type="email" id="emailIn" placeholder="Enter valid email" autocomplete="off" name="email" /></p>
+    
+            <label for="passwordIn">Password</label>
+            <p><input class="input2" type="password" id="passwordIn" placeholder="8 characters minimum" name="password"/></p>
+            <p class="submit"><input class="input2" type="submit" value="Sign In" name="logintype" /></p>
+          </form>
+        </div>
+        <div id="button" onclick="changeform()">Sign In </div>
+    </section> 
+  
+    <!-- <div id="navigation">
+      <nav class="nav vertical">
+          <ul>
+            <li id="custumize">
+              <a href="#">
+                  <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px">
+              </a>
+              <div id="editorname">cart</div>
+            </li>
+            <li id="custumize">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px">
+                </a>
+                <div id="editorname">cart</div>
+              </li>
+              <li id="custumize">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px">
+                </a>
+                <div id="editorname">cart</div>
+              </li>
+          </ul>
+        </nav>
+    </div> -->
+    <div id="gallary">
+        <div id="products">
+            <div style="height: 200px; width: 174px; display: flex; background-color: rgb(243, 233, 233); margin: 12px; flex-direction: column">
+                <img style="width: 100%; height: 100%;" src="static/coders/01967dac1cb906ba1433c924a6992b37.png">
+            </div>
+            <div>
+                <button id="cart_button" class="custom-btn btn-15" style="margin-right: 0px;">
+                    <div>
+                        <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+                    </div>
+                    <div style="padding: 7px;"> Add to cart</div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="preview" style="display: none;">
+        <div id="preview_products">
+            <div  style="height: 70vh; width: 344px; display: flex; background-color: rgb(243, 233, 233); margin: 12px; flex-direction: column">
+                <img id="image_pre" style="width: 100%; height: 100%;" src="{{ url_for('static', filename='image/delete.png') }}">
+            </div>
+            <div>
+                <button id="cart_button" class="custom-btn btn-15" style="margin-right: 0px;" onclick="preview_close()">
+                    <div>
+                        <img src="{{ url_for('static', filename='image/close.png') }}" alt="shoping cart" width="30px" height="30px" style="float: left;">
+                    </div>
+                    <div style="padding: 7px;"> close</div>
+                </button>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

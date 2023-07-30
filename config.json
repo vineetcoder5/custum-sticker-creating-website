@@ -1,0 +1,14 @@
+{
+    "parameters":
+    {
+        "host":"localhost",
+        "user": "root",
+        "password_sql": "Vineet3791@",
+        "database": "stickerpradice",
+        "dashboard_username": "gupta",
+        "dashboard_pass1":"2280@",
+        "dashboard_pass2":"3791$",
+        "sheet_price": 50,
+        "upi_id":"9437118029@ybl"
+    }
+}

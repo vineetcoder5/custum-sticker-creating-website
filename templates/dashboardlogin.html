@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html id="new_content">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/unicorn.css') }}">
+        <script src="{{ url_for('static', filename='java/unicorn.js') }}"></script>
+        <title>sticker paradise</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    </head>
+    <body style="background-image: url({{ url_for('static', filename='image/background.png') }});">
+        <header id="header">
+                <div id="logobox">
+                  <a href="/"><h1 id="logo">sticker paradise</h1></a>
+                </div>
+        </header>
+
+        <section id="wrapper" style="display: block;">
+            <div id="one">
+              <form id="loginsignup" method="post">
+                <label for="fName">id</label>
+                <p><input type="text" id="fName" autocomplete="off" name="name"/></p>
+        
+                <label for="email">pass1</label>
+                <p><input type="text" id="email" placeholder="Enter valid email" autocomplete="off" name="email"/></p>
+        
+                <label for="password">Pass2</label>
+                <p><input type="password" id="password" placeholder="8 characters minimum" name="password"/></p>
+                <p class="submit"><input type="submit" value="Sign up" name="logintypee"/></p>
+              </form>
+            </div>
+        
+            <div id="two">
+              <form id="loginsignin" method="post">
+                <label for="emailIn">Email</label>
+                <p><input type="email" id="emailIn" placeholder="Enter valid email" autocomplete="off" name="email" /></p>
+        
+                <label for="passwordIn">Password</label>
+                <p><input type="password" id="passwordIn" placeholder="8 characters minimum"  name="password" /></p>
+                <p class="submit"><input type="submit" value="Sign In" name="logintype"/></p>
+              </form>
+            </div>
+            
+        </section>
+    </body>
+</html>

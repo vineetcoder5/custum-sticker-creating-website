@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home_mobile.css') }}">
+        <script src="{{ url_for('static', filename='java/home.js') }}"></script>
+        <title>sticker paradise</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    </head>
+    <body style="background-image: url({{ url_for('static', filename='image/mobile_background.png') }});">
+        <header id="header">
+                <div id="logobox">
+                  <a href="/"><h1 id="logo">sticker paradise</h1></a>
+                </div>
+                <div class="align-right">
+                    <button id = "logincheck" class="custom-btn btn-15" onclick="openForm()" style="display: inline-block;">Login/Sign up</button>
+                    <a href="/my_account"><button id = "myaccount" class="custom-btn btn-15" style="display: none;"><div>
+                      <img src="{{ url_for('static', filename='image/account.png') }}" alt="shoping cart" width="25px" height="25px" style="float: left;">
+                      </div>
+                      <div >my account</div></button></a>
+                    <!-- <a href="/my_account"><button id = "myaccount" class="custom-btn btn-15"  style="display: none;">My account</button></a> -->
+                </div>
+        </header>
+        <div id="login-failed" class="overlay">
+          <div class="popup">
+            <h2 id="popup_heading">Hello World</h2>
+            <button class="close" onclick="closepopup()" style="border: 0px;">&times;</button>
+            <p id="popup_pragraph">Thanks to pop me!</p>
+        </div>
+        </div>
+          <div id ="custumize_button">
+            <div id="editorbutton" onclick="window.location.href='/custumize';">Let's Designs</div>
+          </div>
+
+        <section id="wrapper">
+            <div id="one">
+              <form id="loginsignup" method="post">
+                <label for="fName">Full name</label>
+                <p><input type="text" id="fName" autocomplete="off" name="name"/></p>
+        
+                <label for="email">Email</label>
+                <p><input type="email" id="email" placeholder="Enter valid email" autocomplete="off" name="email"/></p>
+        
+                <label for="password">Password</label>
+                <p><input type="password" id="password" placeholder="8 characters minimum" name="password"/></p>
+                <p class="submit"><input type="submit" value="Sign up" name="logintypee"/></p>
+              </form>
+            </div>
+        
+            <div id="two">
+              <form id="loginsignin" method="post">
+                <label for="emailIn">Email</label>
+                <p><input type="email" id="emailIn" placeholder="Enter valid email" autocomplete="off" name="email" /></p>
+        
+                <label for="passwordIn">Password</label>
+                <p><input type="password" id="passwordIn" placeholder="8 characters minimum"  name="password" /></p>
+                <p class="submit"><input type="submit" value="Sign In" name="logintype"/></p>
+              </form>
+            </div>
+            <div id="button" onclick="changeform()">Sign In </div>
+        </section>
+        <footer>
+          <a href="/privacy_policy" style="text-decoration: none; color: white; font-family: 'Dancing Script', cursive;"><div>privacy policy</div></a>
+          <a href="/terms_and_condition" style="text-decoration: none; color: white; font-family: 'Dancing Script', cursive;">Terms and conditions</a>
+          <a href="/contact_us" style="text-decoration: none; color: white; font-family: 'Dancing Script', cursive;"><div>contact us</div></a>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,213 @@
+<html id="new_content">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/unicorndash.css') }}">
+        <script src="{{ url_for('static', filename='java/unicorndash.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <title>sticker paradise</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    </head>
+    <body>
+      <header id="header">
+        <div id="logobox">
+          <a href="/"><h1 id="logo">sticker paradise</h1></a>
+        </div>
+      </header>
+      <div id="flex1">
+        <div id="navigation">
+          <nav class="nav vertical">
+              <ul>
+                <li onclick="section_one()">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='image/layer.png') }}" alt="shoping cart" width="30px" height="30px">
+                    </a>
+                    <div id="editorname" style="padding-bottom: 0px;">My</div>
+                    <div id="editorname">account</div>
+                </li>
+                <li onclick="section_two()">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='image/cart.png') }}" alt="shoping cart" width="30px" height="30px">
+                    </a>
+                    <div id="editorname" style="padding-bottom: 0px;">order</div>
+                    <div id="editorname">search</div>
+                  </li>
+                <li onclick="section_three(),payment_verification()">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='image/upload.png') }}" alt="shoping cart" width="30px" height="30px">
+                    </a>
+                    <div id="editorname" style="padding-bottom: 0px;">verify</div>
+                    <div id="editorname">Payment</div>
+                </li>
+                <li onclick="section_four()">
+                  <a href="#">
+                      <img src="{{ url_for('static', filename='image/upload.png') }}" alt="shoping cart" width="30px" height="30px">
+                  </a>
+                  <div id="editorname" style="padding-bottom: 0px;">download</div>
+                  <div id="editorname">canvas</div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <section id="section_one" >
+          <div id="unicorn_stats">
+            <div id="top_button" onclick="order_stats()">
+              <div style="font-size: x-large;">order delivered</div>
+              <div id="orderdelivered" style="font-size: xx-large;">123456</div>
+            </div>
+            <div id="top_button">
+              <div style="font-size: x-large;">pending for printing</div>
+              <div id="pendingprinting" style="font-size: xx-large;">123456</div>
+            </div>
+            <div id="top_button" style="float: none;">
+              <div style="font-size: xx-large;">verify Order pending</div>
+              <div id="pendingverify" style="font-size: xx-large;">123456</div>
+            </div>
+            <div id="top_button" style="float: none;">
+              <div style="font-size: xx-large;">total income</div>
+              <div  id="income" style="font-size: xx-large;">5000</div>
+            </div>
+         </div>
+         <div style="display: flex; justify-content: space-evenly;">
+            <div id="chart_sale" style="float: left;">
+                <canvas id="saleschart" width="550" height="400"></canvas>
+            </div>
+            <div id="chart_sale">
+              <canvas id="revenuechart" width="500" height="400"></canvas>
+            </div>
+          </div>
+        </section>
+        <section id="section_two" style="display: none;">
+          <div id="search_buttton">
+            <p style=" float: left;"><input class="input2" type="text" id="user_id" autocomplete="off" placeholder="Enter user id" name="user_id" /></p>
+            <button onclick="search_order()" class="input2" style=" margin-left: 14px; width: auto; border-radius: 25px;">search</button>
+          </div>
+          <div id="searchitem_align">
+            <div id="search_order">
+              <div style="display: flex; justify-content: space-around;"> 
+                <div style="font-family: monospace; font-size: 28px; margin-top:  8px;">orders in printing</div>
+              </div>
+              <div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 4px;">
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">orderid</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">Date</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">Order status</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">item</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">Quantity</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; ">packed</div>
+              </div>
+              <hr>
+              <ul id="list-container" style="list-style-type: none; padding-left: 0px;">
+                
+              </ul>
+            </div>
+            <div  id="preview_image" >
+              <img id="dynamic_image" src="{{ url_for('static', filename='image/delete.png') }}" alt="delete" style="border: 5px solid #555; border-radius: 25px">
+            </div>
+            <div id="adress_list" >
+              <div style="font-family: monospace; font-size: 28px; margin-top:  15px;">Adress</div>
+              <div id="final_name" style="font-family: monospace; font-size: 17px; margin-top:  5px;">name</div>
+              <div id="final_adress1" style="font-family: monospace; font-size: 17px; margin-top:  2px;">joda</div>
+              <div id="final_adress2" style="font-family: monospace; font-size: 17px; margin-top:  2px;">barbil</div>
+              <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">
+                  <div id="final_state" style="float: left; margin-right: 10px;">odisha</div>
+                  <div id="final_pincode" >123456</div>
+              </div>
+              <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">India</div>
+              <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">
+                  <div style="float: left; margin-right: 10px;">Mobile number:- </div>
+                  <div id="final_mobilenumber" >123457890</div>
+              </div>
+              <div style="font-family: monospace; font-size: 17px; margin-top:  2px;">
+                <div style="float: left; margin-right: 10px;">email:- </div>
+                <div id="final_email" >dfs@fds.fds</div>
+            </div>
+          </div>
+        </div>
+        </section>
+        <section id="section_three" style="display: none;">
+          <div style="display: flex; justify-content: space-around;"> 
+            <div style="font-family: monospace; font-size: 28px; margin-top:  8px; margin-bottom: 10px;">payments to verify</div>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 4px;">
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">reject</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">Date</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">orderid</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">userid</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">sender name</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">phone</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">email</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">total</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; ">verified</div>
+          </div>
+          <ul id="payment_verify_list" style="list-style-type: none; padding-left: 0px;">
+            <li>
+              <div id="verify_payment_list">
+                <button class="input2" style=" float: left; width: auto; border-radius: 15px; display: flex; align-items: center;">
+                  <div style=" width: fit-content; float: left; display: flex; justify-content: flex-start;">
+                    <img style=" border-radius: 10px;" src="{{ url_for('static', filename='image/upload.png') }}" alt="reject" >
+                  </div>
+                </button>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">date</div>
+                <div id="verify_order_id" style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">orderid</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">userid</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">vineet Gupta</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">123456789</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">sdf@dsfsd.fds</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">100</div>
+                <button class="input2" style=" width: auto; border-radius: 15px; display: flex; align-items: center;">
+                  <div style=" width: fit-content; float: left; display: flex; justify-content: flex-start;">
+                    <img style=" border-radius: 10px;" src="{{ url_for('static', filename='image/upload.png') }}" alt="verify" >
+                  </div>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section id="section_four" style="display: none;">
+          <div id="download_buttton">
+            <p style=" float: left;"><input class="input2" type="text" id="quantity_number" autocomplete="off" placeholder="Enter user id" name="user_id" value="1"/></p>
+            <button onclick="download_order()" class="input2" style=" margin-left: 14px; width: auto; border-radius: 25px;">search</button>
+          </div>
+          <div id="searchitem_align">
+          <div id="download_order">
+            <div style="display: flex; justify-content: space-around;"> 
+              <div id="orders_quan" style="font-family: monospace; font-size: 28px; margin-top:  8px;">download for printing (1,2,3,4)</div>
+            </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 4px;">
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">date</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">orderid</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">user_id</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">quantity</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">fileimage</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">filename</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">download</div>
+            <div style="font-family: monospace; font-size: 15px; width: fit-content; ">status update</div>
+          </div>
+          <ul id="download_order_list" style="list-style-type: none; padding-left: 0px;">
+            <li>
+              <div id="download_orders">
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">date</div>
+                <div id="download_order_id" style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">orderid</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">quantity</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">fileimage</div>
+                <div style="font-family: monospace; font-size: 15px; width: fit-content; float: left;">filename</div>
+                <button class="input2" style=" float: left; width: auto; border-radius: 15px; display: flex; align-items: center;">
+                  <div style=" width: fit-content; float: left; display: flex; justify-content: flex-start;">
+                    <img style=" border-radius: 10px;" src="{{ url_for('static', filename='image/upload.png') }}" alt="reject" >
+                  </div>
+                </button>
+                <button class="input2" style=" width: auto; border-radius: 15px; display: flex; align-items: center;">
+                  <div style=" width: fit-content; float: left; display: flex; justify-content: flex-start;">
+                    <img style=" border-radius: 10px;" src="{{ url_for('static', filename='image/upload.png') }}" alt="verify" >
+                  </div>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+        </section>
+      </div>
+    </body>
+</html>
