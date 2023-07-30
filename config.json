@@ -3,12 +3,12 @@
     {
         "host":"localhost",
         "user": "root",
-        "password_sql": "Vineet3791@",
+        "password_sql": "passward",
         "database": "stickerpradice",
-        "dashboard_username": "gupta",
-        "dashboard_pass1":"2280@",
-        "dashboard_pass2":"3791$",
+        "dashboard_username": "username",
+        "dashboard_pass1":"password",
+        "dashboard_pass2":"second password",
         "sheet_price": 50,
-        "upi_id":"9437118029@ybl"
+        "upi_id":"your upi id"
     }
 }
