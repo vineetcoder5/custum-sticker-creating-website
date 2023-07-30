@@ -26,10 +26,6 @@ app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'stickerparadise'
 
 
-# app.config['MYSQL_HOST'] = 'Localhost'
-# app.config['MYSQL_USER'] = 'stickerparadise'
-# app.config['MYSQL_PASSWORD'] = 'Vineet3791@'
-# app.config['MYSQL_DB'] = 'stickerparadise'
 
 
 mysql = MySQL(app)
