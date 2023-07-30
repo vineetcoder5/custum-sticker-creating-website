@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+   
+}
+body{
+    /* background: #b182cd; */
+    background: rgb(201, 152, 152);
+    /* overflow: auto; */
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+#logo {
+    width: fit-content;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    float: left;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+}
+#logobox{
+    width: auto;
+    height: inherit;
+    float: left;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 95vw;
+    /* position: absolute; */
+    justify-content: space-around;
+    align-items: flex-end;
+    bottom: 13px;
+}
+  
+#big_logo{
+    height: 22vh;
+    width: 10vw;
+    /* margin: 12px; */
+    float: left;
+    display: flex;
+}
+
+#content{
+    float: left;
+    background-color: white;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 25px;
+    padding: 12px;
+}
+
+#flex1{
+    width: 96vw;
+    float: left;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+h2 + p {
+    margin-top: 20px;
+  }
